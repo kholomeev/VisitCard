@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Visit Card</string>
+    <string name="full_name">Full Name</string>
+    <string name="title">Title</string>
+    <string name="phone">+7 (959) 269-88-64</string>
+    <string name="handle">\@HolomeevKirill</string>
+    <string name="email">holomeev2012@gmail.com</string>
 </resources>

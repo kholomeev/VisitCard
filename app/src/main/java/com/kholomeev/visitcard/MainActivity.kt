@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,13 +32,16 @@ class MainActivity : ComponentActivity() {
             VisitCardTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MainInfo(
-                        full_name = "Full Name",
-                        title = "Title",
+                        full_name = stringResource(R.string.full_name),
+                        title = stringResource(R.string.title),
                         modifier = Modifier.padding(innerPadding)
                     )
-//                    SocialMedia(
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
+                    SocialMedia(
+                        phone = stringResource(R.string.phone),
+                        handle = stringResource(R.string.handle),
+                        email = stringResource(R.string.email),
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
@@ -74,21 +78,23 @@ fun MainInfo(full_name: String, title: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun SocialMedia(modifier: Modifier = Modifier) {
-    Box(modifier) {
-        Row {
+fun SocialMedia(phone: String, handle: String, email: String, modifier: Modifier = Modifier) {
+    Box() {
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically) {
             val image = painterResource(R.drawable.phone)
             Image(
                 painter = image,
                 contentDescription = null,
-                contentScale = ContentScale.None,
+                contentScale = ContentScale.None
             )
             Text(
-                text = "+7 (959) 269-88-64",
+                text = phone,
                 modifier = modifier
             )
         }
-        Row {
+        Row(horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically) {
             val image = painterResource(R.drawable.telegram)
             Image(
                 painter = image,
@@ -96,11 +102,12 @@ fun SocialMedia(modifier: Modifier = Modifier) {
                 contentScale = ContentScale.None
             )
             Text(
-                text = "@HolomeevKirill",
+                text = handle,
                 modifier = modifier
             )
         }
-        Row {
+        Row(horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically) {
             val image = painterResource(R.drawable.email)
             Image(
                 painter = image,
@@ -108,7 +115,7 @@ fun SocialMedia(modifier: Modifier = Modifier) {
                 contentScale = ContentScale.None
             )
             Text(
-                text = "holomeev2012@gmail.com",
+                text = email,
                 modifier = modifier
             )
         }
@@ -119,7 +126,10 @@ fun SocialMedia(modifier: Modifier = Modifier) {
 @Composable
 fun MainInfoPreview() {
     VisitCardTheme {
-        MainInfo("Full Name", "Title")
-        //SocialMedia()
+        MainInfo(stringResource(R.string.full_name),
+            stringResource(R.string.title))
+        SocialMedia(stringResource(R.string.phone),
+            stringResource(R.string.handle),
+            stringResource(R.string.email))
     }
 }
