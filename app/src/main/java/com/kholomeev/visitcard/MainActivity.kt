@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
             VisitCardTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     VisitCard(
-                        full_name = stringResource(R.string.full_name),
+                        fullName = stringResource(R.string.full_name),
                         title = stringResource(R.string.title),
                         phone = stringResource(R.string.phone),
                         handle = stringResource(R.string.handle),
@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun VisitCard(full_name: String, title: String, phone: String, handle: String, email: String, modifier: Modifier = Modifier) {
+fun VisitCard(fullName: String, title: String, phone: String, handle: String, email: String, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = modifier.fillMaxSize()
@@ -64,7 +64,7 @@ fun VisitCard(full_name: String, title: String, phone: String, handle: String, e
             modifier = modifier.fillMaxWidth()
         )
         Text(
-            text = full_name,
+            text = fullName,
             textAlign = TextAlign.Center,
             fontSize = 36.sp,
             fontWeight = FontWeight.Bold,
@@ -90,7 +90,7 @@ fun VisitCard(full_name: String, title: String, phone: String, handle: String, e
 @Composable
 private fun SocialMediaHandle(modifier: Modifier, phone: String, image: Painter) {
     Row(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth().padding(5.dp),
         horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -114,7 +114,7 @@ private fun SocialMediaHandle(modifier: Modifier, phone: String, image: Painter)
 fun MainInfoPreview() {
     VisitCardTheme {
         VisitCard(
-            full_name = stringResource(R.string.full_name),
+            fullName = stringResource(R.string.full_name),
             title = stringResource(R.string.title),
             phone = stringResource(R.string.phone),
             handle = stringResource(R.string.handle),
