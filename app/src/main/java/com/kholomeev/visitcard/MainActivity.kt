@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             VisitCardTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    MainInfo(
+                    VisitCard(
                         full_name = stringResource(R.string.full_name),
                         title = stringResource(R.string.title),
                         phone = stringResource(R.string.phone),
@@ -50,7 +51,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainInfo(full_name: String, title: String, phone: String, handle: String, email: String, modifier: Modifier = Modifier) {
+fun VisitCard(full_name: String, title: String, phone: String, handle: String, email: String, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = modifier.fillMaxSize()
@@ -77,7 +78,7 @@ fun MainInfo(full_name: String, title: String, phone: String, handle: String, em
             modifier = modifier.fillMaxWidth()
         )
     }
-    Column(modifier = modifier.fillMaxSize(),
+    Column(modifier = modifier.fillMaxSize().padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Bottom) {
         SocialMediaHandle(modifier, phone, painterResource(R.drawable.phone))
@@ -90,8 +91,8 @@ fun MainInfo(full_name: String, title: String, phone: String, handle: String, em
 private fun SocialMediaHandle(modifier: Modifier, phone: String, image: Painter) {
     Row(
         modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
+        horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
             painter = image,
@@ -103,7 +104,7 @@ private fun SocialMediaHandle(modifier: Modifier, phone: String, image: Painter)
             text = phone,
             color = Color.Green,
             fontSize = 20.sp,
-            modifier = modifier
+            modifier = modifier.fillMaxWidth()
         )
     }
 }
@@ -112,7 +113,7 @@ private fun SocialMediaHandle(modifier: Modifier, phone: String, image: Painter)
 @Composable
 fun MainInfoPreview() {
     VisitCardTheme {
-        MainInfo(
+        VisitCard(
             full_name = stringResource(R.string.full_name),
             title = stringResource(R.string.title),
             phone = stringResource(R.string.phone),
