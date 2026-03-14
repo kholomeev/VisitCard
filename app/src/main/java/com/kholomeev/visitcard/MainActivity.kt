@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -79,40 +80,41 @@ fun MainInfo(full_name: String, title: String, modifier: Modifier = Modifier) {
 
 @Composable
 fun SocialMedia(phone: String, handle: String, email: String, modifier: Modifier = Modifier) {
-    Box() {
-        Row(horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically) {
+    Column(modifier = modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             val image = painterResource(R.drawable.phone)
             Image(
                 painter = image,
                 contentDescription = null,
-                contentScale = ContentScale.None
+                contentScale = ContentScale.Crop,
+                modifier = modifier.size(50.dp)
             )
             Text(
                 text = phone,
                 modifier = modifier
             )
         }
-        Row(horizontalArrangement = Arrangement.SpaceAround,
-            verticalAlignment = Alignment.CenterVertically) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             val image = painterResource(R.drawable.telegram)
             Image(
                 painter = image,
                 contentDescription = null,
-                contentScale = ContentScale.None
+                contentScale = ContentScale.Crop,
+                modifier = modifier.size(50.dp)
             )
             Text(
                 text = handle,
                 modifier = modifier
             )
         }
-        Row(horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             val image = painterResource(R.drawable.email)
             Image(
                 painter = image,
                 contentDescription = null,
-                contentScale = ContentScale.None
+                contentScale = ContentScale.Crop,
+                modifier = modifier.size(50.dp)
             )
             Text(
                 text = email,
