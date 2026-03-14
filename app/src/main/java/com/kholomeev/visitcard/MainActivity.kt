@@ -10,9 +10,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,17 +33,17 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VisitCardTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Surface(modifier = Modifier.fillMaxSize()) {
                     MainInfo(
                         full_name = stringResource(R.string.full_name),
                         title = stringResource(R.string.title),
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier
                     )
                     SocialMedia(
                         phone = stringResource(R.string.phone),
                         handle = stringResource(R.string.handle),
                         email = stringResource(R.string.email),
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier
                     )
                 }
             }
@@ -81,8 +83,11 @@ fun MainInfo(full_name: String, title: String, modifier: Modifier = Modifier) {
 @Composable
 fun SocialMedia(phone: String, handle: String, email: String, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Bottom) {
+        Row(modifier = modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically) {
             val image = painterResource(R.drawable.phone)
             Image(
                 painter = image,
@@ -95,7 +100,9 @@ fun SocialMedia(phone: String, handle: String, email: String, modifier: Modifier
                 modifier = modifier
             )
         }
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(modifier = modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically) {
             val image = painterResource(R.drawable.telegram)
             Image(
                 painter = image,
@@ -108,7 +115,9 @@ fun SocialMedia(phone: String, handle: String, email: String, modifier: Modifier
                 modifier = modifier
             )
         }
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(modifier = modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically) {
             val image = painterResource(R.drawable.email)
             Image(
                 painter = image,
