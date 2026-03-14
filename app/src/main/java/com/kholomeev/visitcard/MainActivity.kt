@@ -1,5 +1,6 @@
 package com.kholomeev.visitcard
 
+import android.R.attr.fontWeight
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
@@ -19,12 +21,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.kholomeev.visitcard.ui.theme.VisitCardTheme
 
 class MainActivity : ComponentActivity() {
@@ -62,20 +67,21 @@ fun MainInfo(full_name: String, title: String, modifier: Modifier = Modifier) {
             painter = image,
             contentDescription = null,
             contentScale = ContentScale.None,
-            modifier = modifier
-                .align(alignment = Alignment.CenterHorizontally)
+            modifier = modifier.fillMaxWidth()
         )
         Text(
             text = full_name,
             textAlign = TextAlign.Center,
-            modifier = modifier
-                .align(alignment = Alignment.CenterHorizontally)
+            fontSize = 36.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = modifier.fillMaxWidth()
         )
         Text(
             text = title,
             textAlign = TextAlign.Center,
-            modifier = modifier
-                .align(alignment = Alignment.CenterHorizontally)
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = modifier.fillMaxWidth()
         )
     }
 }
@@ -97,6 +103,8 @@ fun SocialMedia(phone: String, handle: String, email: String, modifier: Modifier
             )
             Text(
                 text = phone,
+                color = Color.Green,
+                fontSize = 20.sp,
                 modifier = modifier
             )
         }
@@ -112,6 +120,8 @@ fun SocialMedia(phone: String, handle: String, email: String, modifier: Modifier
             )
             Text(
                 text = handle,
+                color = Color.Green,
+                fontSize = 20.sp,
                 modifier = modifier
             )
         }
@@ -127,6 +137,8 @@ fun SocialMedia(phone: String, handle: String, email: String, modifier: Modifier
             )
             Text(
                 text = email,
+                color = Color.Green,
+                fontSize = 20.sp,
                 modifier = modifier
             )
         }
