@@ -1,27 +1,23 @@
 package com.kholomeev.visitcard
 
-import android.R.attr.fontWeight
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -91,57 +87,31 @@ fun SocialMedia(phone: String, handle: String, email: String, modifier: Modifier
     Column(modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Bottom) {
-        Row(modifier = modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically) {
-            val image = painterResource(R.drawable.phone)
-            Image(
-                painter = image,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = modifier.size(50.dp)
-            )
-            Text(
-                text = phone,
-                color = Color.Green,
-                fontSize = 20.sp,
-                modifier = modifier
-            )
-        }
-        Row(modifier = modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically) {
-            val image = painterResource(R.drawable.telegram)
-            Image(
-                painter = image,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = modifier.size(50.dp)
-            )
-            Text(
-                text = handle,
-                color = Color.Green,
-                fontSize = 20.sp,
-                modifier = modifier
-            )
-        }
-        Row(modifier = modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically) {
-            val image = painterResource(R.drawable.email)
-            Image(
-                painter = image,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = modifier.size(50.dp)
-            )
-            Text(
-                text = email,
-                color = Color.Green,
-                fontSize = 20.sp,
-                modifier = modifier
-            )
-        }
+        SocialMediaHandle(modifier, phone, painterResource(R.drawable.phone))
+        SocialMediaHandle(modifier, handle, painterResource(R.drawable.telegram))
+        SocialMediaHandle(modifier, email, painterResource(R.drawable.email))
+    }
+}
+
+@Composable
+private fun SocialMediaHandle(modifier: Modifier, phone: String, image: Painter) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            painter = image,
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = modifier.size(50.dp)
+        )
+        Text(
+            text = phone,
+            color = Color.Green,
+            fontSize = 20.sp,
+            modifier = modifier
+        )
     }
 }
 
