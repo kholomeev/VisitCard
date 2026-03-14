@@ -38,9 +38,6 @@ class MainActivity : ComponentActivity() {
                     MainInfo(
                         full_name = stringResource(R.string.full_name),
                         title = stringResource(R.string.title),
-                        modifier = Modifier
-                    )
-                    SocialMedia(
                         phone = stringResource(R.string.phone),
                         handle = stringResource(R.string.handle),
                         email = stringResource(R.string.email),
@@ -53,7 +50,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainInfo(full_name: String, title: String, modifier: Modifier = Modifier) {
+fun MainInfo(full_name: String, title: String, phone: String, handle: String, email: String, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = modifier.fillMaxSize()
@@ -80,10 +77,6 @@ fun MainInfo(full_name: String, title: String, modifier: Modifier = Modifier) {
             modifier = modifier.fillMaxWidth()
         )
     }
-}
-
-@Composable
-fun SocialMedia(phone: String, handle: String, email: String, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Bottom) {
@@ -119,10 +112,13 @@ private fun SocialMediaHandle(modifier: Modifier, phone: String, image: Painter)
 @Composable
 fun MainInfoPreview() {
     VisitCardTheme {
-        MainInfo(stringResource(R.string.full_name),
-            stringResource(R.string.title))
-        SocialMedia(stringResource(R.string.phone),
-            stringResource(R.string.handle),
-            stringResource(R.string.email))
+        MainInfo(
+            full_name = stringResource(R.string.full_name),
+            title = stringResource(R.string.title),
+            phone = stringResource(R.string.phone),
+            handle = stringResource(R.string.handle),
+            email = stringResource(R.string.email),
+            modifier = Modifier
+        )
     }
 }
